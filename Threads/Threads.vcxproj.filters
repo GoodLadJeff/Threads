@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Threads.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SImpleThreads.h">
@@ -24,6 +24,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Matrices.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ExercisePage2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

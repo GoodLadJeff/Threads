@@ -2,18 +2,7 @@
 #include <thread>
 #include "SimpleThreads.h"
 #include "Matrices.h"
-
-void ComputeMatrices()
-{
-   /* const int row = 2;
-    const int column = 2;
-
-    int sum[row][column] = 
-
-    for (int i = 0; i < row; ++i)
-        for (int j = 0; j < column; ++j)
-            sum[i][j] = a[i][j] + b[i][j];*/
-}
+#include "ExercisePage2.h"
 
 int main()
 {
@@ -29,4 +18,10 @@ int main()
     int mat2[Row2][Column2] = { { 1, 1 },
                                 { 2, 2 } };
     Matrix::mulMat(mat1, mat2);
+
+    std::cout << "--------------" << std::endl;
+
+    Thread::Sequencial();
+    Thread::ThreadLocal();
+    Thread::ThreadGlobal();
 }
