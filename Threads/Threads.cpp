@@ -1,20 +1,32 @@
-// Threads.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include <thread>
+#include "SimpleThreads.h"
+#include "Matrices.h"
+
+void ComputeMatrices()
+{
+   /* const int row = 2;
+    const int column = 2;
+
+    int sum[row][column] = 
+
+    for (int i = 0; i < row; ++i)
+        for (int j = 0; j < column; ++j)
+            sum[i][j] = a[i][j] + b[i][j];*/
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    std::thread thread_one = std::thread{ HelloWorld() };
+    std::thread thread_two = std::thread{ HelloAgainWorld() };
+
+    thread_one.join();
+    thread_two.join();
+
+    int mat1[Row1][Column1] = { { 1, 1 },
+                                { 2, 2 } };
+
+    int mat2[Row2][Column2] = { { 1, 1 },
+                                { 2, 2 } };
+    Matrix::mulMat(mat1, mat2);
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
