@@ -4,6 +4,44 @@
 #include "Matrices.h"
 #include "ExercisePage2.h"
 
+class countdown
+{
+public:
+
+	countdown(int* countP, int oddEvenP, std::mutex& mutex) :
+		count(countP),
+		oddEven(oddEvenP),
+		m(mutex)
+	{
+
+	}
+
+	void operator()() const
+	{
+		startcount();
+	}
+
+private:
+
+	int oddEven;
+	int* count;
+	std::mutex& m;
+
+	void startcount() const
+	{
+		while (*count < 1000)
+		{
+			std::lock_guard<std::mutex> lock(m);
+			if (*count % 2 == oddEven)
+			{
+				std::cout << oddEven << " counts : " << *count << std::endl;
+				*count += 1;
+			}
+		}
+	}
+
+};
+
 int main()
 {
     std::thread thread_one = std::thread{ HelloWorld() };
@@ -24,4 +62,13 @@ int main()
     Thread::Sequencial();
     Thread::ThreadLocal();
     Thread::ThreadGlobal();
+
+	int count = 0;
+	std::mutex m;
+
+	std::thread countEven(countdown(&count, 0, m));
+	std::thread countOdd(countdown(&count, 1, m));
+
+	countEven.join();
+	countOdd.join();
 }
