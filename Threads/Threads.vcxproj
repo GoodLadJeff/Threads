@@ -131,6 +131,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Countdown.h" />
     <ClInclude Include="ExercisePage2.h" />
     <ClInclude Include="Matrices.h" />
   </ItemGroup>

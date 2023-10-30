@@ -2,45 +2,8 @@
 #include <thread>
 #include "SimpleThreads.h"
 #include "Matrices.h"
+#include "Countdown.h"
 #include "ExercisePage2.h"
-
-class countdown
-{
-public:
-
-	countdown(int* countP, int oddEvenP, std::mutex& mutex) :
-		count(countP),
-		oddEven(oddEvenP),
-		m(mutex)
-	{
-
-	}
-
-	void operator()() const
-	{
-		startcount();
-	}
-
-private:
-
-	int oddEven;
-	int* count;
-	std::mutex& m;
-
-	void startcount() const
-	{
-		while (*count < 1000)
-		{
-			std::lock_guard<std::mutex> lock(m);
-			if (*count % 2 == oddEven)
-			{
-				std::cout << oddEven << " counts : " << *count << std::endl;
-				*count += 1;
-			}
-		}
-	}
-
-};
 
 int main()
 {
