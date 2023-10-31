@@ -4,6 +4,7 @@
 #include "Matrices.h"
 #include "Countdown.h"
 #include "ExercisePage2.h"
+#include "SimpleRestaurant.h"
 
 int main()
 {
@@ -34,4 +35,6 @@ int main()
 
 	countEven.join();
 	countOdd.join();
+
+    SimpleRestaurant::PlayService();
 }
