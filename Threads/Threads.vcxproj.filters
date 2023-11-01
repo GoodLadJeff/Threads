@@ -29,5 +29,11 @@
     <ClInclude Include="ExercisePage2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Countdown.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleRestaurant.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -31,7 +31,7 @@ int GetARandomIngredient()
     return random_number;
 }
 
-void Customer()
+void Customer()// the customer picks 3 random ingredients (which are simply ints) and pushes them into the order vector and notifies the cv
 {
     {
         lock_guard<mutex> lock(mtx);
@@ -48,6 +48,7 @@ void Customer()
     }
     cv.notify_one();
 
+    // when the final meal is done the customer will eat the meal and leave
     unique_lock<mutex> lock(mtx);
     cv.wait(lock, [] { return !final_meal.empty(); });
 
@@ -56,7 +57,7 @@ void Customer()
     cout << "customer enjoyed his meal, paid and left" << endl;
 }
 
-void Waiter()
+void Waiter()// the waiter waits for the order to not be empty anymore, and fills the ingredients to prepare vector, the clears the order
 {
     unique_lock<mutex> lock(mtx);
     cv.wait(lock, [] { return !order.empty(); });
@@ -76,7 +77,7 @@ void Waiter()
     cv.notify_one();
 }
 
-void Cook()
+void Cook()// the cook fills the ingredients cooked vector, after waiting for each ingredient to be cooked, then clears the ing to prepapre and notifies 
 {
     unique_lock<mutex> lock(mtx);
     cv.wait(lock, [] { return !ingredients_to_prepare.empty(); });
@@ -95,7 +96,7 @@ void Cook()
     cv.notify_one();
 }
 
-void Chief()
+void Chief()// the chief puts the final meal together
 {
     unique_lock<mutex> lock(mtx);
     cv.wait(lock, [] { return !ingredients_cooked.empty(); });
